@@ -1,0 +1,14 @@
+JIS-Deskflow の配布と利用について
+
+JIS-Deskflow は、Deskflow 1.27.0 を基に Junichi Ogura が改変・保守する独立した派生版です。本家Deskflowの公式リリースではありません。
+
+ライセンスは GPL-2.0-only WITH LicenseRef-OpenSSL-Exception です。上流の著作権表示とライセンスは維持します。詳細は同梱の LICENSE と LICENSE_EXCEPTION の原文を参照してください。第三者ライブラリには各ライセンスが適用されます。
+
+本ソフトウェアは同梱ライセンスに定めるとおり無保証で提供します。独自の利用料、会員登録、GitHub認証をダウンロード条件として要求しません。
+
+配布先: https://github.com/jogu6/deskflow-jis-updates/releases/latest
+更新確認はこの派生版の公開配布先に対して行います。更新の確認とダウンロード案内に対応し、無人でのインストールを行う機能ではありません。
+
+PC間のキー・マウス・クリップボード通信には既存のDeskflow TLS接続を使用します。公開配布アセットに個人設定、証明書、秘密鍵、検証ログを含めません。
+
+変更の概要と確認範囲は README、リリースノート、対応ソースZIPを参照してください。
