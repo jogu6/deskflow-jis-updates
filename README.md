@@ -2,14 +2,14 @@
 
 日本語JISキーボードのかな入力と、PC間のクリップボード共有を改善したDeskflowの派生版です。**Junichi Ogura** が改変・保守しています。Deskflow 1.27.0を基にした独立した配布で、本家の公式リリースではありません。
 
-**[最新版をダウンロード](https://github.com/jogu6/deskflow-jis-updates/releases/latest)**
+**[Windows版](https://github.com/jogu6/deskflow-jis-updates/releases/latest/download/JIS-Deskflow-Windows-x64-Setup.exe) ／ [Linux版](https://github.com/jogu6/deskflow-jis-updates/releases/latest/download/JIS-Deskflow-Linux-x86_64.run)**
 
 | 配布物 | 用途 |
 | --- | --- |
-| `JIS-Deskflow-1.27.1-Windows-x64-Setup.exe` | Windows 11用インストーラー |
-| `JIS-Deskflow-1.27.1-Linux-x86_64.run` | Xubuntu / UbuntuのX11環境用インストーラー |
-| `JIS-Deskflow-1.27.1-Linux-x86_64.flatpak` | 同じLinux版のFlatpak本体 |
-| `JIS-Deskflow-1.27.1-source.zip` | 対応ソース・ビルド手順 |
+| `JIS-Deskflow-Windows-x64-Setup.exe` | Windows 11用インストーラー（最新版への固定リンク） |
+| `JIS-Deskflow-Linux-x86_64.run` | Xubuntu / UbuntuのX11環境用インストーラー（最新版への固定リンク） |
+| `JIS-Deskflow-1.27.2-Linux-x86_64.flatpak` | 同じLinux版のFlatpak本体。単体導入は常駐登録を行いません |
+| `JIS-Deskflow-1.27.2-source.zip` | 対応ソース・ビルド手順 |
 | `SHA256SUMS` | 配布ファイルのSHA256 |
 
 ダウンロードにGitHubへのログインは不要です。
@@ -38,11 +38,13 @@ Linuxサーバーでは古いクリップボード容量設定を転送上限と
 Linuxで `.run` に実行許可を付けて導入する場合は、ダウンロードしたフォルダーで次を実行します。
 
 ```sh
-chmod +x JIS-Deskflow-1.27.1-Linux-x86_64.run
-./JIS-Deskflow-1.27.1-Linux-x86_64.run
+chmod +x JIS-Deskflow-Linux-x86_64.run
+./JIS-Deskflow-Linux-x86_64.run
 ```
 
 Windowsはサービスが自動起動する構成です。通常のGUIを閉じても共有サービスは継続します。トレイアイコンはGUI起動時に表示されます。設定は保護されているため、変更には上記の管理者用ショートカットを使います。
+
+Linuxの `.run` は、ユーザー用systemdサービスとログイン時の自動起動を登録します。異常終了時は3秒後に再起動します。既に動作中のアプリを停止せず、次回ログインからサービス管理になります。sudoは不要です。
 
 ### コピーと貼り付け
 
@@ -66,9 +68,9 @@ Linux43スイート・1149ケース、Windows41スイート・1156ケースを�
 
 ## 更新と削除
 
-起動時の更新確認を有効にすると、この公開配布先の最新版を確認します。更新通知からReleaseを開き、対応するインストーラーを実行します。無人での自動インストールではありません。既存の接続設定は引き継ぎます。
+起動時の更新確認を有効にすると、この派生版の最新版を確認します。アプリの更新ボタンから、使用OSに対応したインストーラーを直接取得できます。Assets一覧からファイルを探す必要はありません。適用は利用者の操作で開始し、接続設定を引き継ぎます。使用中に勝手に停止・更新する処理はありません。
 
-Windowsは「インストールされているアプリ」のJIS-Deskflow、または同梱Uninstallから削除できます。Linuxは `flatpak uninstall --user --delete-data org.deskflow.DeskflowJIS` で専用アプリとデータを削除できます。
+Windowsは「インストールされているアプリ」のJIS-Deskflow、または同梱Uninstallから削除できます。Linuxは先に `python3 ~/.local/share/jis-deskflow/Manage-Linux-Service.py remove` で常駐登録を削除し、`flatpak uninstall --user --delete-data org.deskflow.DeskflowJIS` で専用アプリとデータを削除します。
 
 Windowsの配布EXEはコード署名なしです。配布元とSHA256を確認してください。IME・配列・OSの入力保護設定を変更する回避策は含めません。
 
